@@ -18,18 +18,16 @@ public class StudentConfig {
             Student abed = new Student(
                     "Abednego Wambua",
                     "abedxh@gmail.com",
-                    LocalDate.of(1995, JANUARY, 13),
-                    27
+                    LocalDate.of(1995, JANUARY, 13)
             );
             Student caro = new Student(
                     "Caro Wambua",
                     "caro98@gmail.com",
-                    LocalDate.of(1998, JANUARY, 7),
-                    23
+                    LocalDate.of(1998, JANUARY, 7)
             );
-            studentRepository.saveAll(
-                    List.of(caro, abed)
-            );
+//            studentRepository.saveAll(
+//                    List.of(caro, abed)
+//            );
 
         };
     }
