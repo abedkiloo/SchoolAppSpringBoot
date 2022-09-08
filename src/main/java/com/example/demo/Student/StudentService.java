@@ -3,9 +3,11 @@ package com.example.demo.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -37,5 +39,16 @@ public class StudentService {
         }
         this.studentRepository.deleteById(id);
 
+    }
+
+    @Transactional
+    public void updateStudent(Long id, String name) {
+        Student student = studentRepository.findById(id).orElseThrow(()
+                -> new IllegalStateException("student nit found")
+        );
+        if (name != null && name.length() > 0 &&
+                !Objects.equals(student.getName(), name)) {
+            student.setName(name);
+        }
     }
 }

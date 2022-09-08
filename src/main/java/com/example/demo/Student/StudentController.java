@@ -20,12 +20,22 @@ public class StudentController {
     public List<Student> getStudents() {
         return this.studentService.getStudents();
     }
+
     @PostMapping("")
     public void saveStudents(@RequestBody Student student) {
-         studentService.saveStudent(student);
+        studentService.saveStudent(student);
     }
+
     @DeleteMapping("{studentId}")
     public void deleteStudent(@PathVariable("studentId") Long id) {
         studentService.deleteStudent(id);
+    }
+
+    @PutMapping(path = "{studentId}")
+    public void updateStudent(
+            @PathVariable("studentId") Long id,
+            @RequestParam String name
+    ) {
+        studentService.updateStudent(id, name);
     }
 }
